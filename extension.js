@@ -16,24 +16,24 @@ const Wsp = imports.ui.workspaceSwitcherPopup
 function main(){
     this.enable = function(){
 	var monitor = Main.layoutManager.primaryMonitor
-	var width = 3
+	var width = 1
 	var height = monitor.height - 60
 	var x = monitor.width - width
-	var y = 30
+	var y = 40
 	this.actorright = new St.Button({style_class:'desktopscroller'})
 	this.actorright.set_position(0,y)
-	this.actorright.set_width(width)
+	this.actorright.set_width(width+1)
 	this.actorright.set_height(height)
 	this.actorright.opacity = 0
-	this.actorright.connect('clicked', this.hook.bind(this))
+	this.actorright.connect('button-press-event', this.hook.bind(this))
 	Main.layoutManager.addChrome(this.actorright, {visibleInFullscreen:true})
 	
 	this.actorleft = new St.Button({style_class:'desktopscroller'})
 	this.actorleft.set_position(x,y)
-	this.actorleft.set_width(width)
+	this.actorleft.set_width(width+2)
 	this.actorleft.set_height(height)
 	this.actorleft.opacity = 0
-	this.actorleft.connect('clicked', this.hook1.bind(this))
+	this.actorleft.connect('button-press-event', this.hook1.bind(this))
 	Main.layoutManager.addChrome(this.actorleft, {visibleInFullscreen:true})
 	this.configure_overlay()
 	this.configure_wsp()
@@ -47,17 +47,19 @@ function main(){
 	this.overview.disconnect(this.connid0)
 	this.overview.disconnect(this.connid1)
     }
-    this.hook = function(actor, button){
-	if(button==1) 
-	    this.switch_workspace(-1)
-	else
+    this.hook = function(actor, event){
+	let button = event.get_button()
+	if (button==2) 
 	    this.switch_workspace(1)
+	else
+	    this.switch_workspace(-1)
     }
-    this.hook1 = function(actor, button){
-	if(button==1) 
-	    this.switch_workspace(1)
-	else
+    this.hook1 = function(actor, event){
+	let button = event.get_button()
+	if (button==1) 
 	    this.switch_workspace(-1)
+	else
+	    this.switch_workspace(1)
     }
     this.switch_workspace = function(incremental){
 	var index = global.screen.get_active_workspace_index()
@@ -65,7 +67,7 @@ function main(){
 	index += incremental
 	index = ((index % num)+num)%num
 	global.screen.get_workspace_by_index(index).activate(false)
-	this.wsp.display(incremental, index)
+	//this.wsp.display(incremental, index) //make it more quick...
     }
     this.configure_overlay = function(){
 	this.overview = get_actor_by_name(global.overlay_group, 'overview')
