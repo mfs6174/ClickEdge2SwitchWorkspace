@@ -1,0 +1,47 @@
+
+Known issues
+============
+* Not tested on multiple monitors.
+* The one-pixel border is blocking all other non-scroll events, I cannot found
+  documentation to do properly event propagation to lower actors. Anyway the
+  actor is hidden while in overview mode and actor size is calculated to avoid
+  block panel and notification areas.
+
+
+Changelog
+=========
+
+Version 8
+---------
+* Fixed focus to destination workspace.
+
+Version 7
+---------
+* Works in fullscreen.
+* Added desktop indicator popup.
+
+Version 6
+---------
+* Disconnects overview signals when extension is disabled.
+
+Version 5
+---------
+* Added show and hide methods, applied at overview mode.
+
+Version 4
+---------
+* Modified enable/disable to be methods.
+* Fixed actor size to do not block notification area.
+* Modified to be inactive in overview mode.
+
+Version 3
+---------
+* Fixed main class init.
+* Fixed scope through events.
+* Modified enable/disable functions to init/destroy instead of show/hide.
+* Renamed stylesheet class to avoid generic naming collisions.
+* Added readme and license files.
+
+Version 2
+---------
+* Modified metadata.
