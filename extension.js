@@ -21,7 +21,7 @@ function main(){
 	var x = monitor.width - width
 	var y = 40
 	this.actorright = new St.Button({style_class:'desktopscroller'})
-	this.actorright.set_position(0,y)
+	this.actorright.set_position(x,y)
 	this.actorright.set_width(width+1)
 	this.actorright.set_height(height)
 	this.actorright.opacity = 0
@@ -29,7 +29,7 @@ function main(){
 	Main.layoutManager.addChrome(this.actorright, {visibleInFullscreen:true})
 	
 	this.actorleft = new St.Button({style_class:'desktopscroller'})
-	this.actorleft.set_position(x,y)
+	this.actorleft.set_position(0,y)
 	this.actorleft.set_width(width+2)
 	this.actorleft.set_height(height)
 	this.actorleft.opacity = 0
@@ -49,10 +49,10 @@ function main(){
     }
     this.hook = function(actor, event){
 	let button = event.get_button()
-	if (button==2) 
+	if (button==3) 
 	    this.switch_workspace(1)
-	else
-	    this.switch_workspace(-1)
+	//else
+	//    this.switch_workspace(-1)
     }
     this.hook1 = function(actor, event){
 	let button = event.get_button()
@@ -76,8 +76,8 @@ function main(){
     }
     this.configure_wsp = function(){
 	this.wsp = new Wsp.WorkspaceSwitcherPopup()
-	this.actorright.raise(this.wsp.actorright)
-	this.actorleft.raise(this.wsp.actorleft)
+	this.actorright.raise(this.wsp.actor)
+	this.actorleft.raise(this.wsp.actor)
     }
     this.show = function(){
 	this.actorright.show()
