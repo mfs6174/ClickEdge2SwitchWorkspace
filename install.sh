@@ -1,6 +1,6 @@
 #!/bin/bash
 
-extension_name="CE2SW@mfs6174.tk"
+extension_name="CE2SW@mfs6174.org"
 
 if [ $UID -eq 0 ];then
 	DEST="/usr/share/gnome-shell/extensions/$extension_name"
