@@ -26,7 +26,7 @@ function main(){
 	this.actorright.set_height(height)
 	this.actorright.opacity = 0
 	this.actorright.connect('button-press-event', this.hook.bind(this))
-	Main.layoutManager.addChrome(this.actorright, {visibleInFullscreen:true})
+	Main.layoutManager.addChrome(this.actorright, {/*visibleInFullscreen:true*/})
 	
 	this.actorleft = new St.Button({style_class:'desktopscroller'})
 	this.actorleft.set_position(0,y)
@@ -34,7 +34,7 @@ function main(){
 	this.actorleft.set_height(height)
 	this.actorleft.opacity = 0
 	this.actorleft.connect('button-press-event', this.hook1.bind(this))
-	Main.layoutManager.addChrome(this.actorleft, {visibleInFullscreen:true})
+	Main.layoutManager.addChrome(this.actorleft, {/*visibleInFullscreen:true*/})
 	this.configure_overlay()
 	this.configure_wsp()
     }
@@ -44,8 +44,8 @@ function main(){
 	Main.layoutManager.removeChrome(this.actorleft)
 	this.actorleft.destroy()
 	
-	this.overview.disconnect(this.connid0)
-	this.overview.disconnect(this.connid1)
+//	this.overview.disconnect(this.connid0)
+//	this.overview.disconnect(this.connid1)
     }
     this.hook = function(actor, event){
 	let button = event.get_button()
@@ -70,9 +70,9 @@ function main(){
 	//this.wsp.display(incremental, index) //make it more quick...
     }
     this.configure_overlay = function(){
-	this.overview = get_actor_by_name(global.overlay_group, 'overview')
-	this.connid0 = this.overview.connect('show', this.hide.bind(this))
-	this.connid1 = this.overview.connect('hide', this.show.bind(this))
+//	this.overview = get_actor_by_name(global.overlay_group, 'overview')
+//	this.connid0 = this.overview.connect('show', this.hide.bind(this))
+//	this.connid1 = this.overview.connect('hide', this.show.bind(this))
     }
     this.configure_wsp = function(){
 	this.wsp = new Wsp.WorkspaceSwitcherPopup()
