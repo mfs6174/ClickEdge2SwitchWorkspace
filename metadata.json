@@ -3,9 +3,10 @@
   "description": "Click at the left and right edges of the screen to switch around desktops(workspaces).", 
   "name": "ClickEdge2SwitchWorkspace", 
   "shell-version": [
-    "3.2",
-    "3.4"
-    "3.8"
+    "3.8",
+    "3.12",
+    "3.14",
+    "3.16"
   ], 
   "url": "https://github.com/mfs6174/ClickEdge2SwitchWorkspace", 
   "uuid": "CE2SW@mfs6174.org", 
