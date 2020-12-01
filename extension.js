@@ -62,11 +62,22 @@ function main(){
 	    this.switch_workspace(1)
     }
     this.switch_workspace = function(incremental){
-	var index = global.screen.get_active_workspace_index()
-	var num = global.screen.n_workspaces
+	var index
+	var num
+	if (global.screen) {
+	    index = global.screen.get_active_workspace_index()
+	    num = global.screen.n_workspaces
+	}
+	else {
+	    index = global.workspaceManager.get_active_workspace_index()
+	    num = global.workspaceManager.n_workspaces
+	}
 	index += incremental
 	index = ((index % num)+num)%num
-	global.screen.get_workspace_by_index(index).activate(false)
+	if (global.screen)
+	    global.screen.get_workspace_by_index(index).activate(false)
+	else
+	    global.workspaceManager.get_workspace_by_index(index).activate(false)
 	//this.wsp.display(incremental, index) //make it more quick...
     }
     this.configure_overlay = function(){

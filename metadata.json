@@ -8,9 +8,10 @@
     "3.14",
     "3.16",
     "3.18",
-    "3.20"
+      "3.20",
+      "3.30"
   ], 
   "url": "https://github.com/mfs6174/ClickEdge2SwitchWorkspace", 
   "uuid": "CE2SW@mfs6174.org", 
-  "version": 4
+  "version": 5
 }
